@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_01_182126) do
+ActiveRecord::Schema.define(version: 2022_08_01_195139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beaches_tables", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "town", null: false
+    t.string "state", null: false
+    t.text "description", null: false
+    t.text "url"
+    t.text "image"
+  end
+
+  create_table "reviews_tables", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.integer "rating", null: false
+    t.integer "votes"
+    t.bigint "beach_id", null: false
+    t.index ["beach_id"], name: "index_reviews_tables_on_beach_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
