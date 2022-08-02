@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_02_140650) do
+ActiveRecord::Schema.define(version: 2022_08_02_145039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "beaches_tables", force: :cascade do |t|
+  create_table "beaches", force: :cascade do |t|
     t.string "name", null: false
     t.string "town", null: false
     t.string "state", null: false
