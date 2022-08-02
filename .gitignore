@@ -16,7 +16,7 @@
 
 /node_modules
 /yarn-error.log
-
+/Gemfile
 /public/assets
 .byebug_history
 
