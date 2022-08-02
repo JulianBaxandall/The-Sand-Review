@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'beaches#index'
   devise_for :users
 
-  get "/beaches", to: "homes#index"
+  get "/beaches", to: "beaches#index"
 
   namespace :api do
     namespace :v1 do

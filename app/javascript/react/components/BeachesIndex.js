@@ -12,26 +12,41 @@ const BeachesIndex = (props) => {
         throw(error)
       }
       const beachesData = await response.json()
-      setBeaches = beachesData.beaches
+      setBeaches(beachesData)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
-
   }
+
   useEffect(() => {
     fetchData()
   }, [])
 
-  //each to create every tile from each data point
-
-  // we will want to use map to create a bunch of beach tiles
+  const beachesComponents = beaches.map((beach) => {
+    return <div>
+            <p>Name: {beach.name}</p>
+            <p>Town: {beach.town}</p>
+            <p>State: {beach.state}</p>
+            <p>Description: {beach.description}</p>
+            <img 
+              style={{width: "10%", height: "auto"}} 
+              src={beach.url}
+            />
+            <img 
+              style={{width: "10%", height: "auto"}} 
+              src={beach.image}
+            />
+          </div>
+  })
 
   return(
     <div>
         <h1>
           List of Beaches
         </h1>
-       
+        <ul>
+          {beachesComponents}
+        </ul>
     </div>
   )
 }
