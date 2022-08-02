@@ -1,8 +1,16 @@
 import React from 'react'
-import { BrowserRouter, Routes, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import BeachesIndex from './BeachesIndex'
 
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+  return (
+    <BrowserRouter>
+    <Switch>
+    <Route path='/' component={BeachesIndex}/>
+    </Switch>
+    </BrowserRouter>
+)
 }
 
 export default App
