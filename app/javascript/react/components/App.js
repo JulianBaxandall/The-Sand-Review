@@ -6,9 +6,9 @@ import BeachesIndex from './BeachesIndex'
 export const App = (props) => {
   return (
     <BrowserRouter>
-    <Switch>
-    <Route path='/' component={BeachesIndex}/>
-    </Switch>
+      <Switch>
+        <Route path='/' component={BeachesIndex}/>
+      </Switch>
     </BrowserRouter>
 )
 }
