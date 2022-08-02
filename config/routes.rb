@@ -9,7 +9,4 @@ Rails.application.routes.draw do
       resources :beaches, only: [:index]
     end
   end
-
-  # probably wont need line twelcome 
-  # resources :beaches, only: [:index, :show, :new, :create]
 end
