@@ -1,5 +1,5 @@
-class Api::v1::BeachesController < ApplicationController
+class Api::V1::BeachesController < ApplicationController
   def index
-    render json: Beaches.all
+    render json: Beach.all
   end
 end
