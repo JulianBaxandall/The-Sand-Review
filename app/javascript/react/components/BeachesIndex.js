@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import BeachComponent from "./BeachComponent"
 
 const BeachesIndex = (props) => {
   const [beaches, setBeaches] = useState([])
@@ -12,6 +13,7 @@ const BeachesIndex = (props) => {
         throw(error)
       }
       const beachesData = await response.json()
+      console.log(beachesData)
       setBeaches(beachesData)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -23,20 +25,15 @@ const BeachesIndex = (props) => {
   }, [])
 
   const beachesComponents = beaches.map((beach) => {
-    return <div>
-            <p>Name: {beach.name}</p>
-            <p>Town: {beach.town}</p>
-            <p>State: {beach.state}</p>
-            <p>Description: {beach.description}</p>
-            <img 
-              style={{width: "10%", height: "auto"}} 
-              src={beach.url}
-            />
-            <img 
-              style={{width: "10%", height: "auto"}} 
-              src={beach.image}
-            />
-          </div>
+    return <BeachComponent 
+      key={beach.id}
+      name={beach.name}
+      town={beach.town}
+      state={beach.state}
+      description={beach.description}
+      url={beach.url}
+      image={beach.image}
+    />
   })
 
   return(
