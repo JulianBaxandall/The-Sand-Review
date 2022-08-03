@@ -28,14 +28,8 @@ const BeachesIndex = (props) => {
             <p>Town: {beach.town}</p>
             <p>State: {beach.state}</p>
             <p>Description: {beach.description}</p>
-            <img 
-              style={{width: "10%", height: "auto"}} 
-              src={beach.url}
-            />
-            <img 
-              style={{width: "10%", height: "auto"}} 
-              src={beach.image}
-            />
+            <p><a href={beach.url}>{beach.name}</a></p>
+            <img src={beach.image} />
           </div>
   })
 

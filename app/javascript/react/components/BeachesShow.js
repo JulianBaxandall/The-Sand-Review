@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
-import BeachShowTile from "./BeachShowTile"
+
 const BeachesShow = (props) => {
     const [beach, setBeach] = useState({})
 
-    const fetchData = async () => {
+    const getBeaches = async () => {
         try {
             const response = await fetch(`/api/v1/beaches/${props.match.params.id}`)
             if (!response.ok) {
@@ -19,11 +19,27 @@ const BeachesShow = (props) => {
     }
 
     useEffect(() => {
-        fetchData()
+        getBeaches()
     }, [])
 
+    let beachesUrl
+    let beachesImage
+
+    if (beach.url !== null) {
+        beachesUrl = <p><a href={beach.url}>Website</a></p>
+    }
+    if (beach.image !== null) {
+        beachesImage = <img src={beach.image} />
+    }
+
     return (
-       <BeachShowTile beach={beach} />
+        <div>
+            <p>{beach.name}</p>
+            <p>{beach.town}, {beach.state}</p>
+            <p>{beach.description}</p>
+            {beachesUrl}
+            {beachesImage}
+        </div>
     )
 }
 
