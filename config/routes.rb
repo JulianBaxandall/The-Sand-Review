@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "/beaches", to: "homes#index"
+  get "/beaches/new", to: "beaches#new"
   get "/beaches/:id", to: "homes#index"
+
+  resources :beaches, only: [:new, :create]
 
   namespace :api do
     namespace :v1 do
