@@ -1,16 +1,19 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import BeachesIndex from './BeachesIndex'
+import BeachesShow from './BeachesShow';
+export const App = () => {
 
-export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' component={BeachesIndex}/>
+        <Route exact path='/' component={BeachesIndex} />
+        <Route exact path='/beaches' component={BeachesIndex} />
+        <Route exact path="/beaches/:id/" component={BeachesShow} />
       </Switch>
     </BrowserRouter>
-)
+  )
 }
 
 export default App

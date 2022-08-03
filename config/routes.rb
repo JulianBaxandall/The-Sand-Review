@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root 'beaches#index'
+  root 'homes#index'
   devise_for :users
 
-  get "/beaches", to: "beaches#index"
+  get "/beaches", to: "homes#index"
+  get "/beaches/:id", to: "homes#index"
 
   namespace :api do
     namespace :v1 do
@@ -10,6 +11,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # probably wont need line twelcome 
-  # resources :beaches, only: [:index, :show, :new, :create]
+
 end
