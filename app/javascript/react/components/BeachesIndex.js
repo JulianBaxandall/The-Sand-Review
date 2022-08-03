@@ -4,7 +4,7 @@ import BeachComponent from "./BeachComponent"
 const BeachesIndex = (props) => {
   const [beaches, setBeaches] = useState([])
 
-  const fetchData = async () => {
+  const getBeaches = async () => {
     try {
       const response = await fetch('/api/v1/beaches')
       if (!response.ok) {
@@ -21,7 +21,7 @@ const BeachesIndex = (props) => {
   }
 
   useEffect(() => {
-    fetchData()
+    getBeaches()
   }, [])
 
   const beachesComponents = beaches.map((beach) => {
