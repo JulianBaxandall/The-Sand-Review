@@ -9,7 +9,7 @@ class BeachesController < ApplicationController
         @beach = Beach.create(beach_params)
         if @beach.save
             flash[:msg] = "Beach added successfully"
-            redirect_to beaches_path(@beach)
+            redirect_to "/beaches/#{@beach.id}"
         else
             flash.now[:msg] = @beach.errors.full_messages.to_sentence
             render :"beaches/new"
