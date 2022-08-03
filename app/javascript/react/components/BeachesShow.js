@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from "react"
+import NewReviewForm from "./NewReviewForm"
 
 const BeachesShow = (props) => {
     const [beach, setBeach] = useState({})
+    const [currentReview, setCurrentReview] = useState({
+        title:"",
+        rating:"",
+        description:""
+    })
 
-    const getBeaches = async () => {
+    const submitBeach = async (formPayload) => {
+        try {
+            const response = await fetch("api/v1/beaches")
+        } catch (error) {
+            console.log("error in fetch:", error)
+        }
+    }
+    const getBeach = async () => {
         try {
             const response = await fetch(`/api/v1/beaches/${props.match.params.id}`)
             if (!response.ok) {
@@ -18,8 +31,10 @@ const BeachesShow = (props) => {
         }
     }
 
+
+
     useEffect(() => {
-        getBeaches()
+        getBeach()
     }, [])
 
     let beachesUrl
@@ -39,6 +54,7 @@ const BeachesShow = (props) => {
             <p>{beach.description}</p>
             {beachesUrl}
             {beachesImage}
+            <NewReviewForm submitBeach = {submitBeach} currentReview = {currentReview} setCurrentReview = {setCurrentReview}/>
         </div>
     )
 }
