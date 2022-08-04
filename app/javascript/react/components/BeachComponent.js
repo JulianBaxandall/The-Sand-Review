@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 const BeachComponent =(props)=>{
   return (
-    <div>
+    <div class="beach_tile">
       <p>Name: {props.name}</p>
       <p>Town: {props.town}</p>
       <p>State: {props.state}</p>

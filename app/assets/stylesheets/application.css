@@ -15,3 +15,11 @@
  *= require foundation_and_overrides
 
  */
+ /* #65CBDA #15B2D1 #236E95 #1D5171 #C2B280 #DFCE9D */
+ body{
+  background-color: #DFCE9D;
+ }
+.beach_tile {
+  background-color: #DFCE9D;
+}
+
