@@ -38,7 +38,7 @@ const BeachesIndex = (props) => {
 
   return(
     <div>
-        <h1>
+        <h1 class="main_heading">
           List of Beaches
         </h1>
         <ul>
