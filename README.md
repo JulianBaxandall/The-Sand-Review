@@ -1,24 +1,33 @@
-# README
+# The Sand Review
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This website was made to allow people to review and vote on their favorite beaches around New England. 
 
-Things you may want to cover:
+Ruby version 3.0.2
 
-* Ruby version
+## Installation
+* Run ```yarn install```
+* Run ```bundle install```
 
-* System dependencies
+## Starting the server
+* Run ```yarn start``` to start the server
+* Run ```rails s``` to start the React front-end
 
-* Configuration
+## Database creation
+* ```bundle exec rake db:create```
+* ```bundle exec rake db:migrate```
+* (Optional) ```bundle exec rake db:seed```
 
-* Database creation
+## Heroku website
+https://the-sand-review.herokuapp.com
 
-* Database initialization
+# Features
+* TBA
+* TBA
+* TBA
+* TBA
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Authors
+* Scott Lesser
+* Julian Baxandall
+* Bryan Genest
+* Julian Osborne
