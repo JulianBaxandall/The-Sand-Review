@@ -5,7 +5,6 @@ class BeachesController < ApplicationController
     end
 
     def create
- 
         @beach = Beach.create(beach_params)
         if @beach.save
             flash[:msg] = "Beach added successfully"
