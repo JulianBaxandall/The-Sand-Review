@@ -1,17 +1,34 @@
 import React, { useState, useEffect } from "react"
 import NewReviewForm from "./NewReviewForm"
+import ReviewShowTile from "./ReviewShowTile"
 
 const BeachesShow = (props) => {
     const [beach, setBeach] = useState({})
+    const [reviews, setReviews] = useState([])
     const [currentReview, setCurrentReview] = useState({
         title:"",
         rating:"",
         description:""
     })
 
-    const submitBeach = async (formPayload) => {
+    const submitBeach = async (event) => {
+        event.preventDefault()
+        let formPayload = {review: currentReview}
         try {
-            const response = await fetch("api/v1/beaches")
+            let beach_id = props.match.params.id
+            const response = await fetch(`/api/v1/beaches/${beach_id}/reviews` , {
+                credentials: "same-origin",
+                method: "POST",
+                headers: {
+                  "Accept": "application/json",
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formPayload)
+              })
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                throw new Error(errorMessage)
+            }
         } catch (error) {
             console.log("error in fetch:", error)
         }
@@ -31,10 +48,25 @@ const BeachesShow = (props) => {
         }
     }
 
-
+    const getReviews = async() => {
+        try {
+            let beach_id = props.match.params.id
+            const response = await fetch(`/api/v1/beaches/${beach_id}/reviews`)
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw (error)
+            }
+            const reviewsData = await response.json()
+            setReviews(reviewsData)
+        } catch(error){
+            console.error(`Error in fetch: ${error.message}`)
+        }
+    }
 
     useEffect(() => {
         getBeach()
+        getReviews()
     }, [])
 
     let beachesUrl
@@ -46,6 +78,18 @@ const BeachesShow = (props) => {
     if (beach.image !== null) {
         beachesImage = <img src={beach.image} />
     }
+        
+    const AllOurReviews = reviews.map(review=>{
+        return(
+                <ReviewShowTile 
+                key={review.id}
+                title={review.title} 
+                text={review.text} 
+                rating={review.rating}
+                />
+        )
+    })
+    
 
     return (
         <div>
@@ -54,6 +98,8 @@ const BeachesShow = (props) => {
             <p>{beach.description}</p>
             {beachesUrl}
             {beachesImage}
+            <h4>Reviews:</h4>
+                {AllOurReviews}
             <NewReviewForm submitBeach = {submitBeach} currentReview = {currentReview} setCurrentReview = {setCurrentReview}/>
         </div>
     )

@@ -17,8 +17,10 @@ const NewReviewForm =(props)=> {
                 <input type="number" name="rating" onChange = {handleChange}></input>
             </label>
             <label>Description
-                <input type="text" name="description" onChange = {handleChange}></input>
+                <input type="text" name="text" onChange = {handleChange}></input>
             </label>
+            <input type="submit" value="Submit Review" />
+
         </form>
 
     )
