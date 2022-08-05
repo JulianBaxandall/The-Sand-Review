@@ -10,14 +10,15 @@ const NewReviewForm =(props)=> {
 
     return (
         <form onSubmit = {props.submitBeach}>
+            <h4>New Review Form</h4>
             <label>Review Title
                 <input type="text" name="title" onChange = {handleChange}></input>
             </label>
             <label>Rating
-                <input type="number" name="rating" onChange = {handleChange}></input>
+                <input type="number" name="rating" min="0" max="5" onChange = {handleChange}></input>
             </label>
             <label>Description
-                <input type="text" name="text" onChange = {handleChange}></input>
+                <textarea type="text" name="text" onChange = {handleChange}></textarea>
             </label>
             <input type="submit" value="Submit Review" />
 

@@ -28,12 +28,10 @@ ActiveRecord::Schema.define(version: 2022_08_03_194438) do
     t.string "title", null: false
     t.integer "rating", null: false
     t.string "text", null: false
-    t.bigint "user_id"
-    t.bigint "beach_id"
+    t.bigint "beach_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["beach_id"], name: "index_reviews_on_beach_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

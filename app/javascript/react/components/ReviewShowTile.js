@@ -3,7 +3,7 @@ import React from "react";
 const ReviewShowTile = (props) => {
 
     return (
-        <div>
+        <div className="">
             <h5>{props.title}</h5>
             <p>Rating: {props.rating}</p>
             <p>{props.text}</p>

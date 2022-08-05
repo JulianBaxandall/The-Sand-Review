@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Beach.create(name: 'Good Harbor Beach', 
+beach1 = Beach.create(name: 'Good Harbor Beach', 
              town: 'Gloucester', 
              state: 'MA', 
              description: 'Located on Thatcher Road/Route 127A, Good Harbor is a beautiful beach with lovely white sand. At low tide, one can walk out to Salt Island, while at high tide, one can enjoy body surfing or boogie boards.', 
              url:'https://www.gloucester-ma.gov/1215/Gloucester-Beaches---Detailed-Informatio', 
              image: 'https://flic.kr/p/8WoLFj'
             )
-Beach.create(name: 'Wingaersheek',
+beach2 = Beach.create(name: 'Wingaersheek',
              town: 'Gloucester', 
              state: 'MA', 
              description: 'Situated in the western part of Gloucester at the end of Atlantic Street off Route 133 and Concord Street, this beautiful beach runs along the Annisquam River and Ipswich Bay. At low tide, the beach extends out for hundreds of yards and a long sandbar is exposed, making for a great place to walk.', 
@@ -43,3 +43,17 @@ Beach.create(name: 'Salem Willows Beach',
              description: 'Salem Willows is an oceanfront park in Salem, Massachusetts. It is named for the European white willow trees planted there in 1801 to form a shaded walk for patients convalescing at a nearby smallpox hospital. The area became a public park in 1858, and in the twentieth century became a summer destination for residents of Boston\'s North Shore', 
              url: 'https://en.wikipedia.org/wiki/Salem_Willows', 
              image: 'https://flic.kr/p/W4fhHn')
+
+review1 = Review.create(
+    title: "A beach",
+    rating: 3,
+    text: "This is a review",
+    beach_id: beach1.id
+)
+
+review2 = Review.create(
+    title: "A beach 2",
+    rating: 1,
+    text: "This is a bad review",
+    beach_id: beach1.id
+)
