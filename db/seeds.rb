@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Beach.create(name: 'Good Harbor Beach', 
+beach1 = Beach.create(name: 'Good Harbor Beach', 
              town: 'Gloucester', 
              state: 'MA', 
              description: 'Located on Thatcher Road/Route 127A, Good Harbor is a beautiful beach with lovely white sand. At low tide, one can walk out to Salt Island, while at high tide, one can enjoy body surfing or boogie boards.', 
@@ -45,15 +45,17 @@ Beach.create(name: 'Salem Willows Beach',
              image: 'https://flic.kr/p/W4fhHn')
 
 review1 = Review.create(
-    title: "A beach",
-    rating: 3,
-    text: "This is a review",
-    beach_id: beach1.id
+            title: "A beach",
+            rating: 3,
+            text: "This is a review",
+            beach_id: beach1.id
 )
 
 review2 = Review.create(
-    title: "A beach 2",
-    rating: 1,
-    text: "This is a bad review",
-    beach_id: beach1.id
+            title: "A beach 2",
+            rating: 1,
+            text: "This is a bad review",
+            beach_id: beach1.id
 )
+
+admin1 = User.create!({:email => "myemail@gmail.com", :role => "admin", :password => "111111", :password_confirmation => "111111" })
