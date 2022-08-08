@@ -10,8 +10,9 @@ const BeachesShow = (props) => {
         rating: "",
         text: ""
     })
+    const [errorMessages, setErrorMessages] = useState([])
 
-    const submitBeach = async (event) => {
+    const submitReview = async (event) => {
         event.preventDefault()
         let formPayload = { review: currentReview }
         try {
@@ -27,14 +28,22 @@ const BeachesShow = (props) => {
             })
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
+                setErrorMessages(errorMessage)
                 throw new Error(errorMessage)
             } else {
-                setReviews (...reviews, currentReview)
+                const reviewData = await response.json()
+                setCurrentReview({
+                    title: "",
+                    rating: "",
+                    text: ""
+                })
+                setReviews ([ reviewData, ...reviews])
             }
         } catch (error) {
             console.log("error in fetch:", error)
         }
     }
+
     const getBeach = async () => {
         try {
             const response = await fetch(`/api/v1/beaches/${props.match.params.id}`)
@@ -59,8 +68,10 @@ const BeachesShow = (props) => {
                 const error = new Error(errorMessage)
                 throw (error)
             }
-            const reviewsData = await response.json()
-            setReviews(reviewsData)
+            const reviewsData = await response.json()            
+            setReviews(reviewsData.sort((review) => {
+                review.updated_at
+            }).reverse())    
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
@@ -95,6 +106,9 @@ const BeachesShow = (props) => {
 
     return (
         <div>
+            <div>
+                <p>{errorMessages}</p>
+            </div>
             <div className="grid-x grid-padding-x grid-padding-y align-center">
                 <div className="cell small-10">
                     <h1>{beach.name}</h1>
@@ -106,7 +120,7 @@ const BeachesShow = (props) => {
             </div>
                 <div className="grid-x grid-padding-x grid-padding-y callout border-box align-center">
                     <div className="cell small-5">
-                        <NewReviewForm submitBeach={submitBeach} currentReview={currentReview} setCurrentReview={setCurrentReview} />
+                        <NewReviewForm submitReview={submitReview} currentReview={currentReview} setCurrentReview={setCurrentReview} />
                     </div>
                     <div className="cell small-5">
                         <h4>Reviews:</h4>
