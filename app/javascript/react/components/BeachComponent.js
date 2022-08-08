@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const BeachComponent = (props) => {
   return (
@@ -8,19 +8,16 @@ const BeachComponent = (props) => {
           <h4>{props.name}</h4>
         </div>
         <div className="card-section">
-          <img src={props.image} style={{ width: "auto", height: "400px" }} />
-          <h4 style={{ marginTop: "20px" }}>
-            {props.town}, {props.state}
-          </h4>
-
+          <img src={props.image} class="beach-image" />
+          <h4 className="location-header">{props.town}, {props.state}</h4>
           <p>{props.description}</p>
-          <a class="button" href={`/beaches/${props.id}`}>
+          <a className="button" href={`/beaches/${props.id}`}>
             View Beach
           </a>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default BeachComponent;
