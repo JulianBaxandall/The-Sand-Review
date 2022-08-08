@@ -5,13 +5,18 @@ import ReviewShowTile from "./ReviewShowTile"
 const BeachesShow = (props) => {
     const [beach, setBeach] = useState({})
     const [reviews, setReviews] = useState([])
+    const [currentReview, setCurrentReview] = useState({
+        title: "",
+        rating: "",
+        text: ""
+    })
 
-    const addReview = async (formFieldReviewData) => {
-        //formFieldReviewData.preventDefault()
-        //let formPayload = { review: currentReview }
+    const submitBeach = async (event) => {
+        event.preventDefault()
+        let formPayload = { review: currentReview }
         try {
-            // const beach_id = props.match.params.id
-            const response = await fetch(`/api/v1/beaches/${beach.id}/reviews`, {
+            let beach_id = props.match.params.id
+            const response = await fetch(`/api/v1/beaches/${beach_id}/reviews`, {
                 credentials: "same-origin",
                 method: "POST",
                 headers: {
@@ -20,16 +25,12 @@ const BeachesShow = (props) => {
                 },
                 body: JSON.stringify(formPayload)
             })
-            debugger
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 throw new Error(errorMessage)
             } else {
-                // From Nick: this might work, but make sure that currentReview is actually a review object
-                debugger
-                // setReviews ([...reviews, currentReview]) 
-                //setCurrentReview({title: "", rating: "", text: "", id: ""})
-
+                setReviews (r =>[...reviews, currentReview])
+                //setCurrentReview({title: "", rating: null, text: ""})
             }
         } catch (error) {
             console.log("error in fetch:", error)
@@ -68,7 +69,6 @@ const BeachesShow = (props) => {
 
     useEffect(() => {
         getBeach()
-        // eventually remove getReviews, add a serializer so that `getBeach` gets those reviews for you
         getReviews()
     }, [])
 
@@ -82,17 +82,23 @@ const BeachesShow = (props) => {
         beachesImage = <img src={beach.image} />
     }
 
-    // make this not start with capital
+    const handleChange =(event)=> {
+        setCurrentReview({
+            ...currentReview, [event.currentTarget.name]: event.currentTarget.value
+        })
+    }
+
     const AllOurReviews = reviews.map((review) => {
         return (
             <ReviewShowTile
-                key={review.id}
+                id={review.id}
                 title={review.title}
                 text={review.text}
                 rating={review.rating}
             />
         )
     })
+
 
     return (
         <div>
@@ -107,7 +113,7 @@ const BeachesShow = (props) => {
             </div>
                 <div className="grid-x grid-padding-x grid-padding-y callout border-box align-center">
                     <div className="cell small-5">
-                        <NewReviewForm addReview={addReview} />
+                        <NewReviewForm submitBeach={submitBeach} handleChange={handleChange} />
                     </div>
                     <div className="cell small-5">
                         <h4>Reviews:</h4>

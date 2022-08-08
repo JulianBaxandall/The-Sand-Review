@@ -10,8 +10,10 @@ class Api::V1::ReviewsController < ApplicationController
     def create
         review = Review.new(review_params)
         review.beach_id = params[:beach_id]
+       
         if review.save
-            render json: {success: "successfully created the review"}
+            
+            render json: review
         else
             render json: {error: review.errors.full_messages }
         end
