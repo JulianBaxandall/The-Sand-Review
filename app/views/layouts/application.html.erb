@@ -7,19 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
   <div class="top-bar">
     <div class="top-bar-left">
-    <ul class="menu">
-      <h1><a href="/">NortheastBeaches</a></h1>
+      <ul class="menu">
+       <li class="menu-text">NortheastBeaches</li>
         <% if request.fullpath != "/beaches" && request.fullpath != "/" %>
           <li><a class="button" href="/beaches">Home</a></li>
         <% else %>
           <li><a class="button" href="/beaches/new">Add New Beach</a></li>
         <% end %>
-        </ul>
+      </ul>
     </div>
-
     <div class="top-bar-right">
       <ul class="menu">
         <%- if current_user -%>
@@ -31,7 +29,6 @@
       </ul>
     </div>
   </div>
-
   </nav>
 
   <%- flash.each do |key, value| -%>
