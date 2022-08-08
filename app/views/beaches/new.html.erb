@@ -1,0 +1,33 @@
+<h2 class="text-center">New Beach Form</h2>
+
+<%= form_for(@beach) do |f| %>
+  <div class="grid-x grid-padding-x align-center">
+    <div class="cell small-10">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x align-center">
+    <div class="cell small-5">
+      <%= f.label :town, "Town" %>
+      <%= f.text_field :town %>
+    </div>
+    <div class="cell small-5">
+      <%= f.label :state, "State" %>
+      <%= f.text_field :state %>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x align-center">
+    <div class="cell small-10">
+      <%= f.label :description, "Description"  %>
+      <%= f.text_area :description %>
+
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+
+      <%= f.submit "Add Beach", :class => "button" %>
+    </div>
+  </div>
+<% end %>
