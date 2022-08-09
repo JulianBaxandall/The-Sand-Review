@@ -30,7 +30,6 @@ const BeachesShow = (props) => {
     }
     
     if (beach.image !== null && beach.hasOwnProperty("image")) {
-        console.log(beach.image.url)
         beachesImage = <img src={beach.image.url} />
     }
 
