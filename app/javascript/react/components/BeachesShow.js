@@ -28,8 +28,10 @@ const BeachesShow = (props) => {
     if (beach.url !== null) {
         beachesUrl = <p><a href={beach.url}>Website</a></p>
     }
-    if (beach.image !== null) {
-        beachesImage = <img src={beach.image} />
+    
+    
+    if (beach.image !== null && beach.hasOwnProperty("image")) {
+        beachesImage = <img src={beach.image.url} />
     }
 
     return (
