@@ -28,6 +28,7 @@ const BeachesIndex = (props) => {
   const beachesComponents = beaches["beaches"].map((beach) => {
     return <BeachComponent 
       key={beach.id}
+      id={beach.id}
       id = {beach.id}
       name={beach.name}
       town={beach.town}
@@ -40,12 +41,14 @@ const BeachesIndex = (props) => {
 
   return(
     <div>
-        <h1 className="main_heading">
-          List of Beaches
+        <h1 classNameName="text-center">
+          Welcome.
         </h1>
-        <ul>
-          {beachesComponents}
-        </ul>
+        <div className="grid-container">
+          <div className="grid-x grid-margin-x">
+            {beachesComponents}
+          </div>
+        </div>
     </div>
   )
 }
