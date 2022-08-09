@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import NewReviewForm from "./NewReviewForm";
 import ReviewShowTile from "./ReviewShowTile";
 
+
 const BeachesShow = (props) => {
   const [beach, setBeach] = useState({});
   const [reviews, setReviews] = useState([]);
 
-  const [errorMessages, setErrorMessages] = useState([]);
+  const [userMessages, setUserMessages] = useState("");
 
   const submitReview = async (event, formPayload) => {
     event.preventDefault();
@@ -23,11 +24,11 @@ const BeachesShow = (props) => {
       });
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
-        setErrorMessages(errorMessage);
+        setUserMessages(errorMessage);
         throw new Error(errorMessage);
       } else {
         const reviewData = await response.json();
-
+        setUserMessages("Review Successfully Added")
         setReviews([reviewData, ...reviews]);
       }
     } catch (error) {
@@ -44,29 +45,14 @@ const BeachesShow = (props) => {
         throw error;
       }
       const beachData = await response.json();
-      setBeach(beachData);
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`);
-    }
-  };
-
-  const getReviews = async () => {
-    try {
-      let beach_id = props.match.params.id;
-      const response = await fetch(`/api/v1/beaches/${beach_id}/reviews`);
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        const error = new Error(errorMessage);
-        throw error;
-      }
-      const reviewsData = await response.json();
+      setBeach(beachData.beach);
       setReviews(
-        reviewsData
-          .sort((review) => {
-            review.updated_at;
-          })
-          .reverse()
-      );
+                beachData.beach.reviews
+                  .sort((review) => {
+                    review.updated_at;
+                  })
+                  .reverse()
+              )
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
@@ -74,7 +60,6 @@ const BeachesShow = (props) => {
 
   useEffect(() => {
     getBeach();
-    getReviews();
   }, []);
 
   let beachesUrl;
@@ -104,8 +89,8 @@ const BeachesShow = (props) => {
 
   return (
     <div>
-      <div>
-        <p>{errorMessages}</p>
+      <div className = "userMessages">
+        {userMessages}
       </div>
       <div className="grid-x grid-padding-x grid-padding-y align-center">
         <div className="cell small-10">

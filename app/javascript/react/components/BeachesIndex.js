@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import BeachComponent from "./BeachComponent"
 
 const BeachesIndex = (props) => {
-  const [beaches, setBeaches] = useState([])
+  const [beaches, setBeaches] = useState({"beaches":[]})
 
   const getBeaches = async () => {
     try {
@@ -19,14 +19,16 @@ const BeachesIndex = (props) => {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
-
+  
   useEffect(() => {
     getBeaches()
   }, [])
 
-  const beachesComponents = beaches.map((beach) => {
+  console.log(beaches)
+  const beachesComponents = beaches["beaches"].map((beach) => {
     return <BeachComponent 
       key={beach.id}
+      id = {beach.id}
       name={beach.name}
       town={beach.town}
       state={beach.state}
@@ -38,7 +40,7 @@ const BeachesIndex = (props) => {
 
   return(
     <div>
-        <h1 class="main_heading">
+        <h1 className="main_heading">
           List of Beaches
         </h1>
         <ul>
