@@ -45,17 +45,17 @@ Beach.create(name: 'Salem Willows Beach',
              image: 'https://flic.kr/p/W4fhHn')
 
 review1 = Review.create(
-            title: "A beach",
+            title: "A beach that makes you feel poetic",
             rating: 3,
-            text: "This is a review",
+            text: "A tasteful beach, with sloping dunes and waves that crash upon the stalwart shore sending misty foam up towards the flocking gulls. Hows this for realistic NICK - ___ -",
             beach_id: beach1.id
 )
 
 review2 = Review.create(
-            title: "A beach 2",
-            rating: 1,
-            text: "This is a bad review",
+            title: "Brings up old memories",
+            rating: 3,
+            text: "When I was a wee lad my papá used to take me down to the beach to collect shells. What a grand time it twas and what a great beach. One time one of the shells was a crab and it pinched me though, so this is a 3",
             beach_id: beach1.id
 )
 
-admin1 = User.create!({:email => "myemail@gmail.com", :role => "admin", :password => "111111", :password_confirmation => "111111" })
+admin1 = User.create(email: "myemail@gmail.com", role:"admin", password:"111111", password_confirmation:"111111" })

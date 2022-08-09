@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import BeachComponent from "./BeachComponent"
 
 const BeachesIndex = (props) => {
-  const [beaches, setBeaches] = useState({"beaches":[]})
+  const [beaches, setBeaches] = useState([])
 
   const getBeaches = async () => {
     try {
@@ -13,8 +13,7 @@ const BeachesIndex = (props) => {
         throw(error)
       }
       const beachesData = await response.json()
-      console.log(beachesData)
-      setBeaches(beachesData)
+      setBeaches(beachesData.beaches)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
@@ -25,7 +24,7 @@ const BeachesIndex = (props) => {
   }, [])
 
   console.log(beaches)
-  const beachesComponents = beaches["beaches"].map((beach) => {
+  const beachesComponents = beaches.map((beach) => {
     return <BeachComponent 
       key={beach.id}
       id={beach.id}

@@ -11,11 +11,15 @@
   <nav class="top-bar">
     <h1><a href="/">NortheastBeaches</a></h1>
 
-    <% if request.fullpath != "/beaches" %>
+    <% if request.fullpath != "/beaches"%>
       <a class="button" href="/beaches">Home</a>
-    <% else %>
-      <a class="button" href="/beaches/new">Add New Beach</a>
     <% end %>
+    <% if current_user%>
+      <%if current_user.role === "admin"%>
+        <a class="button" href="/beaches/new">Add New Beach</a>
+      <%end%>
+    <%end%>
+   
 
     <section class="top-bar-section">
       <ul class="right">

@@ -7,7 +7,7 @@ const BeachesShow = (props) => {
   const [beach, setBeach] = useState({});
   const [reviews, setReviews] = useState([]);
 
-  const [userMessages, setUserMessages] = useState("");
+  const [errorMessages, setErrorMessages] = useState("");
 
   const submitReview = async (event, formPayload) => {
     event.preventDefault();
@@ -24,11 +24,10 @@ const BeachesShow = (props) => {
       });
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
-        setUserMessages(errorMessage);
+        setErrorMessages(errorMessage);
         throw new Error(errorMessage);
       } else {
         const reviewData = await response.json();
-        setUserMessages("Review Successfully Added")
         setReviews([reviewData, ...reviews]);
       }
     } catch (error) {
@@ -48,11 +47,7 @@ const BeachesShow = (props) => {
       setBeach(beachData.beach);
       setReviews(
                 beachData.beach.reviews
-                  .sort((review) => {
-                    review.updated_at;
-                  })
-                  .reverse()
-              )
+                )
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
@@ -89,8 +84,8 @@ const BeachesShow = (props) => {
 
   return (
     <div>
-      <div className = "userMessages">
-        {userMessages}
+      <div className = "errorMessages">
+        {errorMessages}
       </div>
       <div className="grid-x grid-padding-x grid-padding-y align-center">
         <div className="cell small-10">

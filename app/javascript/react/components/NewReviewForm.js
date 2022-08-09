@@ -16,9 +16,8 @@ const NewReviewForm = (props) => {
   };
 
   const handleSubmit = (event) => {
-    let formPayload = { review: currentReview };
-    debugger;
-    props.submitReview(event, formPayload);
+    let formPayload = { review: currentReview }
+    props.submitReview(event, formPayload)
     setCurrentReview({
       title: "",
       rating: "",
