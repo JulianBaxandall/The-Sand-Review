@@ -29,7 +29,6 @@ const BeachesIndex = (props) => {
     return <BeachComponent 
       key={beach.id}
       id={beach.id}
-      id = {beach.id}
       name={beach.name}
       town={beach.town}
       state={beach.state}
