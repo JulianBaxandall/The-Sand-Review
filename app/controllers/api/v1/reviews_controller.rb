@@ -10,6 +10,7 @@ class Api::V1::ReviewsController < ApplicationController
     def create
         review = Review.new(review_params)
         review.beach_id = params[:beach_id]
+        # review.user = current_user
         if review.save
             render json: review
         else
