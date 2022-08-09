@@ -26,10 +26,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  gem "dotenv-rails"
-end
-
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -55,3 +51,4 @@ gem 'foundation-rails', '~> 6.5'
 gem 'webpacker', '~> 3.3'
 gem "fog-aws"
 gem "carrierwave"
+gem "mini_magick"
