@@ -77,9 +77,12 @@ const BeachesShow = (props) => {
     return (
       <ReviewShowTile
         key={review.id}
+        id = {review.id}
+        beach_id = {props.match.params.id}
         title={review.title}
         text={review.text}
         rating={review.rating}
+        votes={review.votes}
       />
     );
   });
