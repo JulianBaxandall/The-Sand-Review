@@ -6,6 +6,4 @@ class AddProfilePhotoToUsers < ActiveRecord::Migration[5.2]
   def updated_at
   end
 
-  def down
-  end
 end

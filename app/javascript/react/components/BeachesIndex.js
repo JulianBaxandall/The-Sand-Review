@@ -13,11 +13,7 @@ const BeachesIndex = (props) => {
         throw(error)
       }
       const beachesData = await response.json()
-      setBeaches(beachesData
-        .sort((beach) => {
-          beach.updated_at;
-        })
-        .reverse())
+      setBeaches(beachesData)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
