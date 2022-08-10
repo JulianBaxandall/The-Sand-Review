@@ -8,7 +8,7 @@ feature "user posts new beach" do
     fill_in "Town",	with: "dat town" 
     fill_in "State",	with: "dat state"  
     fill_in "Description",	with: "yah" 
-    attach_file "Beach Image", "#{Rails.root}/spec/support/images/photo.png"
+    attach_file "Beach Image", "#{Rails.root}/spec/support/images/photo.webp"
 
     click_button "Add Beach"
     
