@@ -1,6 +1,6 @@
 class Api::V1::BeachesController < ApplicationController
   def index
-    render json: Beach.all
+    render json: Beach.order(id: "desc")
   end
 
   def show
