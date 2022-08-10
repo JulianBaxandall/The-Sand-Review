@@ -8,7 +8,7 @@ const BeachComponent = (props) => {
           <h4>{props.name}</h4>
         </div>
         <div className="card-section">
-          <img src={props.image} class="beach-image" />
+          <img src={props.image.url} className="beach-image" />
           <h4 className="location-header">{props.town}, {props.state}</h4>
           <p>{props.description}</p>
           <a className="button" href={`/beaches/${props.id}`}>

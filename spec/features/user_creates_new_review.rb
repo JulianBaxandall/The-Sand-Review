@@ -39,11 +39,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       expect(response.status).not_to eq 200
       expect(response.status).to eq(422)
-
-      # expect(returned_json["title"]).to eq first_review.title
-      # expect(returned_json["rating"]).to eq first_review.rating
-      # expect(returned_json["text"]).to eq first_review.text
-      
     end
   end
 end

@@ -23,7 +23,6 @@ const BeachesIndex = (props) => {
     getBeaches()
   }, [])
 
-  console.log(beaches)
   const beachesComponents = beaches.map((beach) => {
     return <BeachComponent 
       key={beach.id}
@@ -39,7 +38,7 @@ const BeachesIndex = (props) => {
 
   return(
     <div>
-        <h1 classNameName="text-center">
+        <h1 className="text-center">
           Welcome.
         </h1>
         <div className="grid-container">

@@ -7,7 +7,7 @@ const ReviewShowTile = (props) => {
             <h5>{props.title}</h5>
             <p>Rating: {props.rating}</p>
             <p>{props.text}</p>
-            <hr></hr>
+            <hr/>
         </div>
     )
 }
