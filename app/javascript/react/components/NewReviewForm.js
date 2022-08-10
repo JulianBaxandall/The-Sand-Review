@@ -46,7 +46,7 @@ const NewReviewForm = (props) => {
           max="5"
           onChange={handleChange}
           value={currentReview.rating}
-        ></input>
+        />
       </label>
       <label>
         Description
