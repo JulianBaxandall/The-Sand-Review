@@ -1,5 +1,4 @@
 class BeachesController < ApplicationController
-  before_action  :authorize_user
     def new
         @beach = Beach.new
         render :"beaches/new"

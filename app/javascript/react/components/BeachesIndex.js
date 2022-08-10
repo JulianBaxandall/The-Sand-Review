@@ -13,13 +13,12 @@ const BeachesIndex = (props) => {
         throw(error)
       }
       const beachesData = await response.json()
-      console.log(beachesData)
-      setBeaches(beachesData)
+      setBeaches(beachesData.beaches)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
-
+  
   useEffect(() => {
     getBeaches()
   }, [])
@@ -27,6 +26,7 @@ const BeachesIndex = (props) => {
   const beachesComponents = beaches.map((beach) => {
     return <BeachComponent 
       key={beach.id}
+      id={beach.id}
       name={beach.name}
       town={beach.town}
       state={beach.state}
@@ -38,12 +38,14 @@ const BeachesIndex = (props) => {
 
   return(
     <div>
-        <h1 class="main_heading">
-          List of Beaches
+        <h1 className="text-center">
+          Welcome.
         </h1>
-        <ul>
-          {beachesComponents}
-        </ul>
+        <div className="grid-container">
+          <div className="grid-x grid-margin-x">
+            {beachesComponents}
+          </div>
+        </div>
     </div>
   )
 }

@@ -1,19 +1,23 @@
-import React, {useState, useEffect} from "react";
+import React from "react"
 
-const BeachComponent =(props)=>{
+const BeachComponent = (props) => {
   return (
-    <div class="beach_tile">
-      <p>Name: {props.name}</p>
-      <p>Town: {props.town}</p>
-      <p>State: {props.state}</p>
-      <p>Description: {props.description}</p>
-      <a href={props.url}>{props.name} URL</a>
-      <img 
-        style={{width: "10%", height: "auto"}} 
-        src={props.image}
-      />
+    <div className="cell">
+      <div className="card">
+        <div className="card-divider">
+          <h4>{props.name}</h4>
+        </div>
+        <div className="card-section">
+          <img src={props.image.url} className="beach-image" />
+          <h4 className="location-header">{props.town}, {props.state}</h4>
+          <p>{props.description}</p>
+          <a className="button" href={`/beaches/${props.id}`}>
+            View Beach
+          </a>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default BeachComponent
+export default BeachComponent;
