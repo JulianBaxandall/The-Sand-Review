@@ -10,7 +10,7 @@
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="menu">
-       <li class="menu-text">NortheastBeaches</li>
+       <li class="menu-text header-text">NortheastBeaches</li>
         <% if request.fullpath != "/beaches" && request.fullpath != "/" %>
           <li><a class="button" href="/beaches">Home</a></li>
         <% else %>
@@ -21,9 +21,10 @@
     <div class="top-bar-right">
       <ul class="menu">
         <%- if current_user -%>
-          <img src="<%= current_user.profile_photo.thumb %>" />
+          <img id="profile-pic" src="<%= current_user.profile_photo.thumb %>" />
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
+          <img id="profile-pic" src="/default-user-pic.jpeg" />
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>

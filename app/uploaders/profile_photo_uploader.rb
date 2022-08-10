@@ -35,6 +35,6 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   # end
 
   def filename
-     "something.jpg" if original_filename
+     "profilepic.jpg" if original_filename
   end
 end
