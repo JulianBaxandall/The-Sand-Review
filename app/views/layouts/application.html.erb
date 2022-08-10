@@ -7,27 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <nav class="top-bar">
-    <h1><a href="/">NortheastBeaches</a></h1>
-
-    <% if request.fullpath != "/beaches"%>
-      <a class="button" href="/beaches">Home</a>
-    <% end %>
-    <% if current_user%>
-      <%if current_user.role === "admin"%>
-        <a class="button" href="/beaches/new">Add New Beach</a>
-      <%end%>
-    <%end%>
-   
-
-    <section class="top-bar-section">
-      <ul class="right">
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="menu">
+       <li class="menu-text header-text">NortheastBeaches</li>
+        <% if request.fullpath != "/beaches" && request.fullpath != "/" %>
+          <li><a class="button" href="/beaches">Home</a></li>
+        <% else %>
+          <li><a class="button" href="/beaches/new">Add New Beach</a></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
         <%- if current_user -%>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <img id="profile-pic" src="<%= current_user.profile_photo.thumb %>" />
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <img id="profile-pic" src="/default-user-pic.jpeg" />
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
     </div>

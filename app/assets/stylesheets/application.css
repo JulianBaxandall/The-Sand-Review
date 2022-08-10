@@ -23,12 +23,11 @@
   background-color: #DFCE9D;
 }
 
-.beach-image {
-  width: auto;
-  height: 400px;
-}
-
 .location-header {
   margin-top: 20px;
 }
 
+.header-text {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: x-large;
+}
