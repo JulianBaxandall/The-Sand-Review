@@ -13,12 +13,12 @@ const BeachesIndex = (props) => {
         throw(error)
       }
       const beachesData = await response.json()
-      setBeaches(beachesData)
+      setBeaches(beachesData.beaches)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
-
+  
   useEffect(() => {
     getBeaches()
   }, [])

@@ -6,4 +6,5 @@ class Api::V1::BeachesController < ApplicationController
   def show
     render json: Beach.find(params[:id])
   end
+
 end
