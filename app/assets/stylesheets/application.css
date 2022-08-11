@@ -32,3 +32,26 @@
   margin-top: 20px;
 }
 
+.button {
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.up {
+  background-color: #4CAF50;
+  opacity: 50%;
+}
+
+.down{
+  background-color: #FF0000;
+  opacity: 50%;
+}
+
+.selected {
+  opacity: 100%;
+}

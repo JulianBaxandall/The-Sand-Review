@@ -3,10 +3,12 @@ import VoteCountComponent from "./VoteCountComponent"
 
 const VotingComponent = (props) => {
     const[count, setCount] = useState(props.netCount)
+    const[upSelectedClass, setUpSelectedClass] = useState("button up")
+    const[downSelectedClass, setDownSelectedClass] = useState("button down")
     const submitVote = async (event) => {
         event.preventDefault
         let voteValue = 1
-        if (event.currentTarget.value === "down"){
+        if (event.currentTarget.id === "downArrow"){
             voteValue = -1
         }
         try {
@@ -23,7 +25,23 @@ const VotingComponent = (props) => {
                 body: JSON.stringify(formPayload),
               })
             const voteData = await response.json()
-            setCount(count + voteData)
+            if((voteData.value === -1) && (voteData.changed===false)){
+                setUpSelectedClass("button up")
+                setDownSelectedClass("button down selected")
+            }else if ((voteData.value === 1) && (voteData.changed===false)){
+                setUpSelectedClass("button up selected")
+                setDownSelectedClass("button down")
+            }else if((voteData.value===2) && (voteData.changed===true)){
+                setUpSelectedClass("button up selected")
+                setDownSelectedClass("button down")
+            }else if((voteData.value===-2) && (voteData.changed===true)){
+                setUpSelectedClass("button up")
+                setDownSelectedClass("button down selected")
+            }else{
+                setUpSelectedClass("button up")
+                setDownSelectedClass("button down")
+            }
+            setCount(count + voteData.value)
         } catch(error){
             console.log("error in fetch:", error);
         }
@@ -34,8 +52,8 @@ const VotingComponent = (props) => {
     return(
         <div>
             <form>
-                <input type = "button" value="up" onClick = {submitVote}></input>
-                <input type = "button" value="down" onClick = {submitVote}></input>
+                <input type = "button" className = {upSelectedClass}  id = "upArrow" value="&uarr;" onClick = {submitVote}></input>&nbsp;
+                <input type = "button" className = {downSelectedClass} id = "downArrow" value="&darr;" onClick = {submitVote}></input>
             </form>
             <div>
                 <h5>Current Count:</h5>

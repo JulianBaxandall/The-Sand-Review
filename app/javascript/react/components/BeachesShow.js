@@ -70,7 +70,7 @@ const BeachesShow = (props) => {
     
     
   if (beach.image !== null && beach.hasOwnProperty("image")) {
-    beachesImage = <img src={beach.image.url} />;
+    beachesImage = <img src={beach.image.url} />
   }
 
   const AllOurReviews = reviews.map((review) => {
