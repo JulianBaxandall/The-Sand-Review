@@ -2,7 +2,7 @@ class Api::V1::BeachesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
-    render json: Beach.order(id: "desc")
+    render json: Beach.order("created_at DESC")
   end
 
   def show
@@ -10,7 +10,6 @@ class Api::V1::BeachesController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     @beach = Beach.find(params[:id])
     if @beach.destroy
       render json: { message: "Success" }, status: 204

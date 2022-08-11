@@ -1,37 +1,43 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BeachComponent = (props) => {
-
   const deletePost = async () => {
-    console.log("click")
-
     try {
       const response = await fetch(`/api/v1/beaches/${props.id}`, {
         credentials: "same-origin",
         method: "DELETE",
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
-      })
+      });
 
       if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw error
+        const errorMessage = `${response.status} (${response.statusText})`;
+        const error = new Error(errorMessage);
+        throw error;
       }
       props.setBeachesData({
-        beaches: props.beachesData.beaches.filter(beach => beach.id !== props.id)
-      })
-      
+        beaches: props.beachesData.beaches.filter(
+          (beach) => beach.id !== props.id
+        ),
+      });
     } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
+      console.error(`Error in fetch: ${error.message}`);
     }
-  }
+  };
 
-  let deleteButton 
-  if (props.currentUser.role === "admin") {
-    deleteButton = <a className="button alert" onClick={deletePost}>Delete</a>
+  let adminButtons;
+  if (props.currentUser !== null) {
+    if (props.currentUser.role === "admin") {
+      adminButtons = (
+        <div>
+          <a className="button alert" onClick={deletePost}>Delete</a>
+          <a className="button secondary" href={`/beaches/${props.id}/edit`}>Edit</a>
+        </div>
+      ) 
+    }
   }
 
   return (
@@ -39,7 +45,7 @@ const BeachComponent = (props) => {
       <div className="card">
         <div className="card-divider">
           <h4 className="beach-title">{props.name}</h4>
-          {deleteButton}
+          {adminButtons}
         </div>
         <div className="card-section">
           <img src={props.image.thumb.url} className="beach-image" />
@@ -53,7 +59,7 @@ const BeachComponent = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BeachComponent
+export default BeachComponent;

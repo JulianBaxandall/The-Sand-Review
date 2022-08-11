@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   devise_for :users
 
-  resources :beaches, only: [:new, :create]
+  resources :beaches, only: [:new, :create, :update, :edit]
 
   namespace :api do
     namespace :v1 do
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   get "/beaches", to: "homes#index"
+  get "/beaches/:id/edit", to: "beaches#edit"
+  patch "/beaches/:id", to: "beaches#update"
   get "/beaches/:id", to: "homes#index"
   delete '/beaches/:id', to: 'beaches#destroy'
 
