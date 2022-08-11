@@ -6,7 +6,6 @@ import ReviewShowTile from "./ReviewShowTile";
 const BeachesShow = (props) => {
   const [beach, setBeach] = useState({});
   const [reviews, setReviews] = useState([]);
-
   const [errorMessages, setErrorMessages] = useState("");
 
   const submitReview = async (event, formPayload) => {
@@ -17,11 +16,12 @@ const BeachesShow = (props) => {
         credentials: "same-origin",
         method: "POST",
         headers: {
-          Accept: "application/json",
+          "Accept": "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formPayload),
-      });
+      })
+
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         setErrorMessages(errorMessage);
@@ -31,9 +31,9 @@ const BeachesShow = (props) => {
         setReviews([reviewData, ...reviews]);
       }
     } catch (error) {
-      console.log("error in fetch:", error);
+      console.log("error in fetch:", error)
     }
-  };
+  }
 
   const getBeach = async () => {
     try {
@@ -54,8 +54,8 @@ const BeachesShow = (props) => {
   };
 
   useEffect(() => {
-    getBeach();
-  }, []);
+    getBeach()
+  }, [])
 
   let beachesUrl;
   let beachesImage;

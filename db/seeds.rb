@@ -52,5 +52,3 @@ review2 = Review.create(
             text: "When I was a wee lad my papá used to take me down to the beach to collect shells. What a grand time it twas and what a great beach. One time one of the shells was a crab and it pinched me though, so this is a 3",
             beach_id: beach1.id
 )
-
-admin1 = User.create(email: "myemail@gmail.com", role:"admin", password:"111111", password_confirmation:"111111" })
