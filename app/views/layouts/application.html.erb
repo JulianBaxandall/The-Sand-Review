@@ -25,8 +25,7 @@
           <img id="profile-pic" src="<%= current_user.profile_photo.thumb %>" />
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
-          <img id="profile-pic" src="/default-user-pic.jpeg" />
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
