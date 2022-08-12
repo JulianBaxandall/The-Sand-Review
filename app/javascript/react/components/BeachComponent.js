@@ -46,11 +46,13 @@ const BeachComponent = (props) => {
           {adminButtons}
         </div>
         <div className="card-section">
-          <img src={props.image.thumb.url} className="beach-image" />
-          <h4 className="location-header">
-            {props.town}, {props.state}
-          </h4>
-          <p>{props.description}</p>
+          <div className="text-center">
+            <img src={props.image.thumb.url} className="beach-image" />
+            <h4 className="location-header">
+              {props.town}, {props.state}
+            </h4>
+            <p>{props.description}</p>
+          </div>
           <a className="button" href={`/beaches/${props.id}`}>
             View Beach
           </a>

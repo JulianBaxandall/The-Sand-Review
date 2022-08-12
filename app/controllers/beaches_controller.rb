@@ -1,5 +1,6 @@
 class BeachesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authorize_user, except: [:index, :show]
+
     def new
         @beach = Beach.new
         render :"beaches/new"
