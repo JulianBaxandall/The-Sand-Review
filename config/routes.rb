@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :beaches, only: [:index, :show, :destroy] do 
         resources :reviews, only: [:create]
+        resources :votes, only: [:create]
       end
     end
   end

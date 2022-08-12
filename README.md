@@ -15,16 +15,16 @@ Ruby version 3.0.2
 ## Database creation
 * ```bundle exec rake db:create```
 * ```bundle exec rake db:migrate```
-* (Optional) ```bundle exec rake db:seed```
+* ```bundle exec rake db:seed```
 
 ## Heroku website
 https://the-sand-review.herokuapp.com
 
 # Features
-* TBA
-* TBA
-* TBA
-* TBA
+* Create, Read, *Update and *Destroy Beach Posts (*admin only)
+* Create and Read Reviews
+* Ability to Upvote and downvote reviews
+* Sign up, and sign in, as well as user profile functionality
 
 # Authors
 * Scott Lesser
