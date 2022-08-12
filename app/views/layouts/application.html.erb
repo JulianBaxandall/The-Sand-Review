@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NortheastBeaches</title>
+  <title>The Sand Review</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
@@ -10,7 +10,7 @@
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="menu">
-       <li class="menu-text header-text">NortheastBeaches</li>
+       <li class="menu-text header-text">The Sand Review</li>
         <% if request.fullpath != "/beaches" && request.fullpath != "/" %>
           <li><a class="button" href="/beaches">Home</a></li>
         <% elsif !current_user.nil? && current_user.role == "admin" %>
