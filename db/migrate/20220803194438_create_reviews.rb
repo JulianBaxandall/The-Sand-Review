@@ -4,7 +4,6 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string :title, null:false
       t.integer :rating, null:false
       t.string :text, null:false
-      t.string :user
       
       t.belongs_to :beach, null: false   
       t.timestamps null:false

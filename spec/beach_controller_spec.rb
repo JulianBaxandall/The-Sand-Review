@@ -13,11 +13,11 @@ RSpec.describe Api::V1::BeachesController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-
-      expect(returned_json[0]["name"]).to eq "Wells"
-      expect(returned_json[1]["name"]).to eq "Salisbury"
-      expect(returned_json[0]["town"]).to eq "York"
-      expect(returned_json[1]["town"]).to eq "Salisbury"
+          
+      expect(returned_json["beaches"][1]["name"]).to eq "Wells"
+      expect(returned_json["beaches"][0]["name"]).to eq "Salisbury"
+      expect(returned_json["beaches"][1]["town"]).to eq "York"
+      expect(returned_json["beaches"][0]["town"]).to eq "Salisbury"
 
     end
   end

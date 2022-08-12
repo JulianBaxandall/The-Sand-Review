@@ -27,27 +27,27 @@ RSpec.describe Api::V1::BeachesController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
   
-      expect(returned_json["name"]).to eq first_beach.name
-      expect(returned_json["town"]).to eq first_beach.town
-      expect(returned_json["state"]).to eq first_beach.state
-      expect(returned_json["description"]).to eq first_beach.description
-      expect(returned_json["url"]).to eq first_beach.url
-      expect(returned_json["image"]).to eq first_beach.image
+      expect(returned_json["beach"]["name"]).to eq first_beach.name
+      expect(returned_json["beach"]["town"]).to eq first_beach.town
+      expect(returned_json["beach"]["state"]).to eq first_beach.state
+      expect(returned_json["beach"]["description"]).to eq first_beach.description
+      expect(returned_json["beach"]["url"]).to eq first_beach.url
+      expect(returned_json["beach"]["image"]).to eq first_beach.image
     end
 
     it "should return API data of second beach" do
       get :show, params: {id: second_beach.id}
-      returned_json = JSON.parse(response.body)
+      returned_json["beach"] = JSON.parse(response.body)
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
   
-      expect(returned_json["name"]).to eq second_beach.name
-      expect(returned_json["town"]).to eq second_beach.town
-      expect(returned_json["state"]).to eq second_beach.state
-      expect(returned_json["description"]).to eq second_beach.description
-      expect(returned_json["url"]).to eq second_beach.url
-      expect(returned_json["image"]).to eq second_beach.image
+      expect(returned_json["beach"]["name"]).to eq second_beach.name
+      expect(returned_json["beach"]["town"]).to eq second_beach.town
+      expect(returned_json["beach"]["state"]).to eq second_beach.state
+      expect(returned_json["beach"]["description"]).to eq second_beach.description
+      expect(returned_json["beach"]["url"]).to eq second_beach.url
+      expect(returned_json["beach"]["image"]).to eq second_beach.image
     end
   end
 end

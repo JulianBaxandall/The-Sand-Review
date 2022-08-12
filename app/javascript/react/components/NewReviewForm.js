@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 
 const NewReviewForm = (props) => {
   const [currentReview, setCurrentReview] = useState({
     title: "",
     rating: "",
     text: "",
-  });
+  })
 
   const handleChange = (event) => {
     setCurrentReview({
       ...currentReview,
       [event.currentTarget.name]: event.currentTarget.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = (event) => {
     let formPayload = { review: currentReview }
@@ -59,7 +58,7 @@ const NewReviewForm = (props) => {
       </label>
       <input type="submit" value="Submit Review" />
     </form>
-  );
-};
+  )
+}
 
-export default NewReviewForm;
+export default NewReviewForm

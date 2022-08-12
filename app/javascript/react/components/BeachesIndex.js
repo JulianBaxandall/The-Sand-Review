@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import BeachComponent from "./BeachComponent"
 
 const BeachesIndex = (props) => {
-  const [beaches, setBeaches] = useState([])
+  const [beachesData, setBeachesData] = useState([])
 
   const getBeaches = async () => {
     try {
@@ -12,8 +12,9 @@ const BeachesIndex = (props) => {
         const error = new Error(errorMessage)
         throw(error)
       }
-      const beachesData = await response.json()
-      setBeaches(beachesData.beaches)
+      const beachData = await response.json()
+      console.log(beachData)
+      setBeachesData(beachData)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
@@ -23,8 +24,13 @@ const BeachesIndex = (props) => {
     getBeaches()
   }, [])
 
-  const beachesComponents = beaches.map((beach) => {
-    return <BeachComponent 
+  let beachesComponents
+  if(beachesData.beaches != null){
+    beachesComponents = beachesData.beaches.map((beach) => {
+    return <BeachComponent
+      currentUser={beach.current_user}
+      setBeachesData={setBeachesData}
+      beachesData={beachesData}
       key={beach.id}
       id={beach.id}
       name={beach.name}
@@ -35,14 +41,15 @@ const BeachesIndex = (props) => {
       image={beach.image}
     />
   })
+}
 
   return(
     <div>
         <h1 className="text-center">
-          Welcome.
+          Welcome
         </h1>
         <div className="grid-container">
-          <div className="grid-x grid-margin-x">
+          <div className="grid-x grid-margin-x grid-margin-y">
             {beachesComponents}
           </div>
         </div>
