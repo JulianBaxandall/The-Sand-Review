@@ -56,7 +56,7 @@ const NewReviewForm = (props) => {
           value={currentReview.text}
         ></textarea>
       </label>
-      <input type="submit" value="Submit Review" />
+      <input type="submit" className="button" value="Submit Review" />
     </form>
   )
 }

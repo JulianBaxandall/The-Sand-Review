@@ -108,7 +108,7 @@ const BeachesShow = (props) => {
           {beachesImage}
         </div>
       </div>
-      <div className="grid-x grid-padding-x grid-padding-y callout border-box align-center">
+      <div className="grid-x grid-padding-x grid-padding-y form-bg align-center">
         <div className="cell small-5">
           <NewReviewForm submitReview={submitReview} />
         </div>
@@ -118,7 +118,6 @@ const BeachesShow = (props) => {
         </div>
       </div>
     </div>
-  );
-};
-
+  )
+}
 export default BeachesShow;
