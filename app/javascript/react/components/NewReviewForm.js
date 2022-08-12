@@ -22,8 +22,8 @@ const NewReviewForm = (props) => {
       title: "",
       rating: "",
       text: "",
-    });
-  };
+    })
+  }
 
   return (
     <form onSubmit={handleSubmit}>
