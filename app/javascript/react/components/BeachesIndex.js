@@ -13,6 +13,7 @@ const BeachesIndex = (props) => {
         throw(error)
       }
       const beachData = await response.json()
+      console.log(beachData)
       setBeachesData(beachData)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -24,7 +25,7 @@ const BeachesIndex = (props) => {
   }, [])
 
   let beachesComponents
-  if(beachesData.hasOwnProperty("beaches")){
+  if(beachesData.beaches != null){
     beachesComponents = beachesData.beaches.map((beach) => {
     return <BeachComponent
       currentUser={beach.current_user}

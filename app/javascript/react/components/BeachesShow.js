@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import NewReviewForm from "./NewReviewForm";
 import ReviewShowTile from "./ReviewShowTile";
 
-
 const BeachesShow = (props) => {
-  const [beach, setBeach] = useState({});
+  const [data, setData] = useState({});
   const [reviews, setReviews] = useState([]);
   const [errorMessages, setErrorMessages] = useState("");
+
+  let initialRender = true;
 
   const submitReview = async (event, formPayload) => {
     event.preventDefault();
@@ -16,11 +17,11 @@ const BeachesShow = (props) => {
         credentials: "same-origin",
         method: "POST",
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formPayload),
-      })
+      });
 
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
@@ -31,9 +32,9 @@ const BeachesShow = (props) => {
         setReviews([reviewData, ...reviews]);
       }
     } catch (error) {
-      console.log("error in fetch:", error)
+      console.log("error in fetch:", error);
     }
-  }
+  };
 
   const getBeach = async () => {
     try {
@@ -44,10 +45,8 @@ const BeachesShow = (props) => {
         throw error;
       }
       const beachData = await response.json();
-      setBeach(beachData.beach);
-      setReviews(
-                beachData.beach.reviews
-                )
+      console.log(beachData);
+      setData(beachData.beach.beach);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
@@ -57,48 +56,39 @@ const BeachesShow = (props) => {
     getBeach()
   }, [])
 
-  let beachesUrl;
-  let beachesImage;
+  let beachesUrl, beachesImage, allReviews, beachTile;
 
-  if (beach.url !== null) {
-    beachesUrl = (
-      <p>
-        <a href={beach.url}>Website</a>
-      </p>
-    );
-  }
+  if(data != null && data.hasOwnProperty("reviews")) {
+    beachesUrl = <p><a href={data.url}>Website</a></p>
+    beachesImage = <img src={data.image.url} />
+    console.log(data)
+    allReviews = data.reviews.map((review) => {
+      return (
+        <ReviewShowTile
+          key={review.id}
+          title={review.title}
+          text={review.text}
+          rating={review.rating}
+        />
+      );
+    })
     
-    
-  if (beach.image !== null && beach.hasOwnProperty("image")) {
-    beachesImage = <img src={beach.image.url} />
-  }
-
-  const AllOurReviews = reviews.map((review) => {
-    return (
-      <ReviewShowTile
-        key={review.id}
-        title={review.title}
-        text={review.text}
-        rating={review.rating}
-      />
-    );
-  });
-
+    beachTile = 
+      <div>
+        <p>
+          {data.town}, {data.state}
+        </p>
+        <p>{data.description}</p>
+        {beachesUrl}
+        {beachesImage}<h1>{data.name}</h1>
+      </div>
+  } 
+  
   return (
     <div>
-      <div className = "errorMessages">
-        {errorMessages}
-      </div>
+      <div className="errorMessages">{errorMessages}</div>
       <div className="grid-x grid-padding-x grid-padding-y align-center">
-        <div className="cell small-10">
-          <h1>{beach.name}</h1>
-          <p>
-            {beach.town}, {beach.state}
-          </p>
-          <p>{beach.description}</p>
-          {beachesUrl}
-          {beachesImage}
-        </div>
+        <div className="cell small-10">{beachTile}</div>
       </div>
       <div className="grid-x grid-padding-x grid-padding-y callout border-box align-center">
         <div className="cell small-5">
@@ -106,7 +96,7 @@ const BeachesShow = (props) => {
         </div>
         <div className="cell small-5">
           <h4>Reviews:</h4>
-          {AllOurReviews}
+          {allReviews}
         </div>
       </div>
     </div>
