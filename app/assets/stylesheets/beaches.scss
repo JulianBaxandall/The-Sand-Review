@@ -1,6 +1,18 @@
-body{
-  background-color: #DFCE9D;
- }
+body {
+    background: rgba(0, 0, 0, 0.99) 
+    linear-gradient(#6797f1, #2440de) fixed;
+    height: 100%;
+}
+
+.bg-image {
+  background: url("../assets/bg.png") fixed;
+}
+
+.form-bg {
+  background: rgba(26, 26, 199, 0.71);
+    height: 100%;
+}
+
 .beach_tile {
   background-color: #DFCE9D;
 }

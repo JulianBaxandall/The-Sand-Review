@@ -1,8 +1,8 @@
-    body{
-        background-color: #FEEDDA;
+    body {
+      background: rgba(8, 23, 59, 0.71) linear-gradient(#FEEDDA, #f2b56f) fixed;
     }
-  
-   .page{
+
+   .page {
     margin: 5vmin
    }
   

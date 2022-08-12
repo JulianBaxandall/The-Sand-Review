@@ -29,7 +29,7 @@ const NewReviewForm = (props) => {
     <div className="cell small-10">
     <form onSubmit={handleSubmit} class="beach-text">
         <h4>New Review Form</h4>
-        <label class="beach-text">
+        <label className="beach-text">
           Review Title
           <input
             type="text"

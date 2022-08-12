@@ -99,26 +99,25 @@ const BeachesShow = (props) => {
       </div>
       <div className="grid-x grid-padding-x grid-padding-y align-center beach-show">
         <div className="cell small-10 centered">
-          <h1 class="beach-text">{beach.name}</h1>
-          <p class="beach-text">
+          <h1 className="beach-text">{beach.name}</h1>
+          <p className="beach-text">
             {beach.town}, {beach.state}
           </p>
-          <p class="beach-text">{beach.description}</p>
+          <p className="beach-text">{beach.description}</p>
           {beachesUrl}
           {beachesImage}
         </div>
       </div>
-      <div className="grid-x grid-padding-x grid-padding-y callout border-box align-center">
+      <div className="grid-x grid-padding-x grid-padding-y form-bg align-center">
         <div className="cell small-5">
           <NewReviewForm submitReview={submitReview} />
         </div>
         <div className="cell small-5">
-          <h4 class="beach-text">Reviews:</h4>
+          <h4 className="beach-text">Reviews:</h4>
           {AllOurReviews}
         </div>
       </div>
     </div>
-  );
-};
-
+  )
+}
 export default BeachesShow;
