@@ -7,6 +7,7 @@ class CreateBeaches < ActiveRecord::Migration[5.2]
       t.text :description, null: false
       t.text :url 
       t.text :image
+      t.timestamps null: false
     end
   end
 end

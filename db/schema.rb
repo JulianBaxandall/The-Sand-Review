@@ -22,16 +22,18 @@ ActiveRecord::Schema.define(version: 2022_08_10_155059) do
     t.text "description", null: false
     t.text "url"
     t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
     t.string "title", null: false
     t.integer "rating", null: false
     t.string "text", null: false
+    t.string "user"
     t.bigint "beach_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user"
     t.index ["beach_id"], name: "index_reviews_on_beach_id"
   end
 
@@ -41,10 +43,11 @@ ActiveRecord::Schema.define(version: 2022_08_10_155059) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "role", default: "member", null: false
+    t.text "profile_photo", default: "/default_pfp.png"
+    t.text "string", default: "/default_pfp.png"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "role", default: "member", null: false
-    t.string "profile_photo", default: "/default_pfp.png"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
