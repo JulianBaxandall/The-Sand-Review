@@ -21,7 +21,7 @@ const ReviewShowTile = (props) => {
     }
 
     return (
-        <div>
+        <div class="beach-text">
             <h5>{props.title}</h5>
             <p>Rating: {props.rating}</p>
             <p>{props.text}</p>            
