@@ -68,7 +68,7 @@ const VotingComponent = (props) => {
 
 
     return(
-        <div id="voting beach-text">
+        <div id="voting" class="beach-text">
             <form>
                 <input type = "button" className = {upSelectedClass}  id = "upArrow" value="&uarr;" onClick = {submitVote}></input>&nbsp;
                 <input type = "button" className = {downSelectedClass} id = "downArrow" value="&darr;" onClick = {submitVote}></input>
