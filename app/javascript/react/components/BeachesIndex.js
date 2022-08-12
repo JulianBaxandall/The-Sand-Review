@@ -45,8 +45,8 @@ const BeachesIndex = (props) => {
 
   return(
     <div>
-        <h1 className="text-center">
-          Welcome
+        <h1 className="text-center welcome">
+          Welcome.
         </h1>
         <div className="grid-container">
           <div className="grid-x grid-margin-x grid-margin-y">

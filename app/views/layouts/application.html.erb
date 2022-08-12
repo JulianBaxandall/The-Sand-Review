@@ -3,19 +3,19 @@
 <head>
   <title>The Sand Review</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
 <body>
-  <div class="top-bar">
+  <div class="top-bar beach-text">
     <div class="top-bar-left">
       <ul class="menu">
        <li class="menu-text header-text">The Sand Review</li>
         <% if request.fullpath != "/beaches" && request.fullpath != "/" %>
-          <li><a class="button" href="/beaches">Home</a></li>
+          <li><a class="button centered" href="/beaches">Home</a></li>
         <% elsif !current_user.nil? && current_user.role == "admin" %>
           <li><a class="button" href="/beaches">Home</a></li>
-          <li><a class="button" href="/beaches/new">Add New Beach</a></li>
+          <li><a class="button centered" href="/beaches/new">Add New Beach</a></li>
         <% end %>
       </ul>
     </div>
@@ -23,10 +23,10 @@
       <ul class="menu">
         <%- if current_user -%>
           <img id="profile-pic" src="<%= current_user.profile_photo.thumb %>" />
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li class = "nav-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
-                  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+                  <li class = "nav-link"><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li class = "nav-link"><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
     </div>
@@ -50,7 +50,8 @@
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
-  
-  <%= yield :extra_footer %>
+  <div class="page">
+    <%= yield :extra_footer %>
+  </div>
 </body>
 </html>

@@ -97,13 +97,13 @@ const BeachesShow = (props) => {
       <div className = "errorMessages">
         {errorMessages}
       </div>
-      <div className="grid-x grid-padding-x grid-padding-y align-center">
-        <div className="cell small-10">
-          <h1>{beach.name}</h1>
-          <p>
+      <div className="grid-x grid-padding-x grid-padding-y align-center beach-show">
+        <div className="cell small-10 centered">
+          <h1 class="beach-text">{beach.name}</h1>
+          <p class="beach-text">
             {beach.town}, {beach.state}
           </p>
-          <p>{beach.description}</p>
+          <p class="beach-text">{beach.description}</p>
           {beachesUrl}
           {beachesImage}
         </div>
@@ -113,7 +113,7 @@ const BeachesShow = (props) => {
           <NewReviewForm submitReview={submitReview} />
         </div>
         <div className="cell small-5">
-          <h4>Reviews:</h4>
+          <h4 class="beach-text">Reviews:</h4>
           {AllOurReviews}
         </div>
       </div>

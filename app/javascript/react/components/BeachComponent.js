@@ -40,19 +40,14 @@ const BeachComponent = (props) => {
 
   return (
     <div className="cell">
-      <div className="card">
+      <div class="card rounded beach-tile">
         <div className="card-divider">
-          <h4 className="beach-title">{props.name}</h4>
-          {adminButtons}
+          <h4 class="beach-text">{props.name}</h4>
         </div>
         <div className="card-section">
-          <div className="text-center">
-            <img src={props.image.thumb.url} className="beach-image" />
-            <h4 className="location-header">
-              {props.town}, {props.state}
-            </h4>
-            <p>{props.description}</p>
-          </div>
+          <img src={props.image.thumb.url} className="beach-image" />
+          <h4 class="location-header beach-text">{props.town}, {props.state}</h4>
+          <p class="beach-text">{props.description}</p>
           <a className="button" href={`/beaches/${props.id}`}>
             View Beach
           </a>
