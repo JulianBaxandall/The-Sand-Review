@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import NewReviewForm from "./NewReviewForm";
 import ReviewShowTile from "./ReviewShowTile";
 
+
 const BeachesShow = (props) => {
-  const [data, setData] = useState({});
+  const [beach, setBeach] = useState({});
   const [reviews, setReviews] = useState([]);
   const [errorMessages, setErrorMessages] = useState("");
-
-  let initialRender = true;
 
   const submitReview = async (event, formPayload) => {
   event.preventDefault();
@@ -22,7 +21,6 @@ const BeachesShow = (props) => {
         },
         body: JSON.stringify(formPayload),
       });
-
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         setErrorMessages(errorMessage);
@@ -46,8 +44,10 @@ const BeachesShow = (props) => {
         throw error;
       }
       const beachData = await response.json();
-      console.log(beachData);
-      setData(beachData.beach.beach);
+      setBeach(beachData.beach);
+      setReviews(
+                beachData.beach.reviews
+                )
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
@@ -74,12 +74,20 @@ const BeachesShow = (props) => {
   }
 
   const AllOurReviews = reviews.map((review) => {
+    let reviewCurrentUser = 0
+    if (review.current_user){
+      reviewCurrentUser = review.current_user.id
+    }
     return (
       <ReviewShowTile
         key={review.id}
+        id = {review.id}
+        beach_id = {props.match.params.id}
         title={review.title}
         text={review.text}
         rating={review.rating}
+        votes={review.votes}
+        user_id={reviewCurrentUser}
       />
     );
   });
@@ -106,7 +114,7 @@ const BeachesShow = (props) => {
         </div>
         <div className="cell small-5">
           <h4>Reviews:</h4>
-          {allReviews}
+          {AllOurReviews}
         </div>
       </div>
     </div>
