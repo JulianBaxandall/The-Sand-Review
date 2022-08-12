@@ -53,4 +53,4 @@ review2 = Review.create(
             beach_id: beach1.id
 )
 
-admin1 = User.create(email: "myemail@gmail.com", role:"admin", password:"111111", password_confirmation:"111111" })
+admin1 = User.create(email: "myemail@gmail.com", role:"admin", password:"111111", password_confirmation:"111111" )
