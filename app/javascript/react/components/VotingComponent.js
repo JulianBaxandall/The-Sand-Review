@@ -25,10 +25,10 @@ const VotingComponent = (props) => {
             voteValue = -1
         }
         try {
-            const beach_id = props.beach_id       
-            const review_id = props.review_id
-            let formPayload = {"vote": {"value":voteValue, "review_id":review_id}}
-            const response = await fetch(`/api/v1/beaches/${beach_id}/votes`, {
+            const beachId = props.beachId       
+            const reviewId = props.reviewId
+            let formPayload = {"vote": {"value":voteValue, "review_id":reviewId}}
+            const response = await fetch(`/api/v1/beaches/${beachId}/votes`, {
                 credentials: "same-origin",
                 method: "POST",
                 headers: {

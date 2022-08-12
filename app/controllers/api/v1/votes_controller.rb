@@ -1,6 +1,7 @@
 class Api::V1::VotesController < ApplicationController
     protect_from_forgery unless: -> { request.format.json? }
     before_action :authenticate_user!
+    
     def create 
         # check whether there exists a vote with the same user_id and review_id
 

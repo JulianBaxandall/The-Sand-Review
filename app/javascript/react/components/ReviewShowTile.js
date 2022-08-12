@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react"
 import VotingComponent from "./VotingComponent"
 
 const ReviewShowTile = (props) => {
-    let votes = props.votes
     let userSelection = ""
     let count = 0
     if(props.votes){
         props.votes.forEach((vote)=> {
             
-            if(vote.user_id === props.user_id){
+            if(vote.user_id === props.userId){
                 if(vote.value === 1) {
                     userSelection = "up"
                 } else {
@@ -25,7 +23,7 @@ const ReviewShowTile = (props) => {
             <h5>{props.title}</h5>
             <p>Rating: {props.rating}</p>
             <p>{props.text}</p>            
-            <VotingComponent review_id = {props.id} beach_id = {props.beach_id} netCount = {count} userSelection = {userSelection}/>
+            <VotingComponent reviewId={props.id} beach_id={props.beachId} netCount={count} userSelection={userSelection}/>
             <hr/>
         </div>
     )
