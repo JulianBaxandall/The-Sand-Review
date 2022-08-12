@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
-import VoteCountComponent from "./VoteCountComponent"
 
 const VotingComponent = (props) => {
     const[count, setCount] = useState(props.netCount)
     const[upSelectedClass, setUpSelectedClass] = useState("button up")
     const[downSelectedClass, setDownSelectedClass] = useState("button down")
+
+    const checkPreviousVote=()=>{
+        if (props.userSelection === "up"){
+            setUpSelectedClass("button up selected")
+        }else if (props.userSelection === "down"){
+            setDownSelectedClass("button down selected")
+        }
+    }
+    useEffect(() => {
+        checkPreviousVote()
+      }, [])
+
+
     const submitVote = async (event) => {
         event.preventDefault
+        
         let voteValue = 1
         if (event.currentTarget.id === "downArrow"){
             voteValue = -1
@@ -24,6 +37,11 @@ const VotingComponent = (props) => {
                 },
                 body: JSON.stringify(formPayload),
               })
+            if (!response.ok) {
+            const errorMessage = `${response.status} (${response.statusText})`
+            const error = new Error(errorMessage)
+            throw(error)
+            }
             const voteData = await response.json()
             if((voteData.value === -1) && (voteData.changed===false)){
                 setUpSelectedClass("button up")

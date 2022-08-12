@@ -6,11 +6,10 @@ import ReviewShowTile from "./ReviewShowTile";
 const BeachesShow = (props) => {
   const [beach, setBeach] = useState({});
   const [reviews, setReviews] = useState([]);
-
   const [errorMessages, setErrorMessages] = useState("");
 
   const submitReview = async (event, formPayload) => {
-    event.preventDefault();
+  event.preventDefault();
     try {
       let beach_id = props.match.params.id;
       const response = await fetch(`/api/v1/beaches/${beach_id}/reviews`, {
@@ -28,12 +27,13 @@ const BeachesShow = (props) => {
         throw new Error(errorMessage);
       } else {
         const reviewData = await response.json();
-        setReviews([reviewData, ...reviews]);
+        setReviews([reviewData.review, ...reviews]);
       }
     } catch (error) {
       console.log("error in fetch:", error);
     }
-  };
+  }
+
 
   const getBeach = async () => {
     try {
@@ -74,6 +74,10 @@ const BeachesShow = (props) => {
   }
 
   const AllOurReviews = reviews.map((review) => {
+    let reviewCurrentUser = 0
+    if (review.current_user){
+      reviewCurrentUser = review.current_user.id
+    }
     return (
       <ReviewShowTile
         key={review.id}
@@ -83,6 +87,7 @@ const BeachesShow = (props) => {
         text={review.text}
         rating={review.rating}
         votes={review.votes}
+        user_id={reviewCurrentUser}
       />
     );
   });
