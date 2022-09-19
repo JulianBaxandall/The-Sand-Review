@@ -26,6 +26,9 @@ https://the-sand-review.herokuapp.com
 * Ability to Upvote and downvote reviews
 * Sign up, and sign in, as well as user profile functionality
 
+<img width="1429" alt="Screen Shot 2022-09-19 at 2 24 41 PM" src="https://user-images.githubusercontent.com/38561548/191088339-80191d27-e3d5-4815-b76e-e0a98a55f506.png">
+
+
 # Authors
 * Scott Lesser
 * Julian Baxandall
