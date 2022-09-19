@@ -9,8 +9,8 @@ Ruby version 3.0.2
 * Run ```bundle install```
 
 ## Starting the server
-* Run ```yarn start``` to start the server
-* Run ```rails s``` to start the React front-end
+* Run ```rails s``` to start the server
+* Run ```yarn start``` to start the React front-end
 
 ## Database creation
 * ```bundle exec rake db:create```
